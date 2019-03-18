@@ -8,13 +8,24 @@ namespace RecipeManagerXamarin
 {
     public partial class App : Application
     {
-        private static RecipeManagerDatabase database; // Stores the database.
+        public static RecipeManagerDatabase Database { get; private set; }
+
+        public App(string dbPath)
+        {
+            InitializeComponent();
+
+            Database = new RecipeManagerDatabase(dbPath);
+
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = Color.FromHex("#008577"),
+                BarTextColor = Color.FromHex("#FFFFFF")
+            };
+        }
 
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
         }
 
         protected override void OnStart()
@@ -30,20 +41,6 @@ namespace RecipeManagerXamarin
         protected override void OnResume()
         {
             // Handle when your app resumes
-        }
-
-        public static RecipeManagerDatabase Database
-        {
-            get
-            {
-                // Creates a new database if one does not exist.
-                if (database == null)
-                {
-                    database = new RecipeManagerDatabase(
-                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "RecipeManagerDatabase.db3"));
-                }
-                return database;
-            }
         }
     }
 }

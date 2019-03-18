@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace RecipeManagerXamarin
 {
-    class Recipe
+    public class Recipe
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }

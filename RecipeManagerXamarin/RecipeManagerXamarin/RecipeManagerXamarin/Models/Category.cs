@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 namespace RecipeManagerXamarin
 {
-    class Category
+    [Table("cateogry")]
+    public class Category
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
