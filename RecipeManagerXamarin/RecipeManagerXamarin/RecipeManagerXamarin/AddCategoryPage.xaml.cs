@@ -12,14 +12,20 @@ namespace RecipeManagerXamarin
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddCategoryPage : ContentPage
 	{
-		public AddCategoryPage ()
+        #region CONSTRUCTORS
+        /// <summary>
+        /// Constructor for the AddCategoryPage class.
+        /// </summary>
+        public AddCategoryPage()
 		{
 			InitializeComponent ();
 
             // Sets the clicked listener for the toolbar item.
             ToolbarItemDone.Clicked += ToolbarItemDone_Clicked;
 		}
+        #endregion
 
+        #region EVENT HANDLERS
         /// <summary>
         /// Clicked listener for the toolbar item.
         /// </summary>
@@ -33,13 +39,13 @@ namespace RecipeManagerXamarin
             // Checks that the category name only contains valid characters.
             if(!String.IsNullOrEmpty(categoryName) && InputCheck.GetInputCheckInstance.IsCategoryNameValid(categoryName))
             {
-                if(App.Database.AddNewCategory(categoryName) == 1)
+                if(App.Database.InsertCategory(categoryName) == 1)
                 {
-                    DisplayAlert("Done", "Category added.", "OK");
+                    await DisplayAlert("Done", "Category added.", "OK");
                 }
                 else
                 {
-                    DisplayAlert("Error", "Error.", "OK");
+                    await DisplayAlert("Error", "Error.", "OK");
                 }
                 
                 
@@ -48,8 +54,9 @@ namespace RecipeManagerXamarin
             }
             else
             {
-                DisplayAlert("Error", "Category name invalid.", "OK");
+                await DisplayAlert("Error", "Category name invalid.", "OK");
             }  
         }
+        #endregion
     }
 }

@@ -7,10 +7,9 @@ namespace RecipeManagerXamarin
 {
     public class RecipeManagerDatabase
     {
+
         // Stores a connection to the database.
         private SQLiteConnection _database;
-
-        public string StatusMessage { get; set; }
 
         /// <summary>
         /// Constructor for the RecipeManagerDatabase class.
@@ -25,24 +24,27 @@ namespace RecipeManagerXamarin
             _database.CreateTable<Category>();
         }
 
-        public int AddNewCategory(string name)
+        /// <summary>
+        /// Inserts a category into the database.
+        /// </summary>
+        /// <param name="name">Category name</param>
+        /// <returns>Code value</returns>
+        public int InsertCategory(string name)
         {
             try
             {
-                if (string.IsNullOrEmpty(name))
-                {
-                    throw new Exception("Valid name required");
-                }
-
                 return _database.Insert(new Category { Name = name });
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to add {0}. Error: {1}", name, ex.Message);
                 return 0;
             }
         }
 
+        /// <summary>
+        /// Gets all the categories from the database.
+        /// </summary>
+        /// <returns>Category list</returns>
         public List<Category> GetAllCategories()
         {
             try
@@ -51,10 +53,8 @@ namespace RecipeManagerXamarin
             }
             catch (Exception ex)
             {
-                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+                return new List<Category>();
             }
-
-            return new List<Category>();
         }
 
     }

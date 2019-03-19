@@ -8,39 +8,63 @@ namespace RecipeManagerXamarin
 {
     public partial class App : Application
     {
-        public static RecipeManagerDatabase Database { get; private set; }
+        #region PROPERTIES
+        public static RecipeManagerDatabase Database { get; private set; } // Stores a database connection object.
+        #endregion
 
+        #region CONSTRUCTORS
+        /// <summary>
+        /// Constructor for the App class.
+        /// </summary>
+        /// <param name="dbPath">Database file path.</param>
         public App(string dbPath)
         {
             InitializeComponent();
 
+            // Creates a new database connection object.
             Database = new RecipeManagerDatabase(dbPath);
 
+            // Creates a new main page.
             MainPage = new NavigationPage(new MainPage())
             {
                 BarBackgroundColor = Color.FromHex("#008577"),
                 BarTextColor = Color.FromHex("#FFFFFF")
             };
         }
+        #endregion
 
+        /// <summary>
+        /// Default constructor for XAML previewer.
+        /// </summary>
         public App()
         {
             InitializeComponent();
         }
 
+        #region EVENT HANDLERS
+        /// <summary>
+        /// Event handler for when the app starts.
+        /// </summary>
         protected override void OnStart()
         {
-            // Handle when your app starts
+            
         }
 
+        /// <summary>
+        /// Event handler for when the app sleeps.
+        /// </summary>
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            
         }
 
+        /// <summary>
+        /// Event handler for when the app resumes.
+        /// </summary>
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            
         }
+        #endregion
     }
 }

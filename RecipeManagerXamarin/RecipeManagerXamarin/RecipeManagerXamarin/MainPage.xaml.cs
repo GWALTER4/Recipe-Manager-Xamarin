@@ -10,8 +10,14 @@ namespace RecipeManagerXamarin
 {
     public partial class MainPage : ContentPage
     {
+        #region PROPERTIES
         public List<Category> CategoryList; // List of categories.
+        #endregion
 
+        #region PROPERTIES
+        /// <summary>
+        /// Constructor for the MainPage class.
+        /// </summary>
         public MainPage()
         {
             BindingContext = this;
@@ -27,10 +33,17 @@ namespace RecipeManagerXamarin
             // Sets the clicked listener for the toolbar item.
             ToolbarItemAddCategory.Clicked += ToolbarItemAddCategory_Clicked;
         }
+        #endregion
 
+        #region EVENT HANDLERS
+        /// <summary>
+        /// Event handler for when the page appears.
+        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            // Gets all the categories from the database.
             CategoryList = App.Database.GetAllCategories();
 
             // Sets the items source of the list view.
@@ -58,5 +71,6 @@ namespace RecipeManagerXamarin
             // Sets the item to -1 so highlighting is disabled.
             Categories.SelectedItem = -1;
         }
+        #endregion
     }
 }
