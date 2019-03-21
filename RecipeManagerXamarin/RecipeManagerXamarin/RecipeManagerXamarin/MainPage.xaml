@@ -6,16 +6,23 @@
              Title="{StaticResource MainPageTitle}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="ToolbarItemAddCategory" Text="+" />
+        <ToolbarItem x:Name="ToolbarItemAddCategory" Icon="ic_add_white_24dp.xml" />
     </ContentPage.ToolbarItems>
 
     <StackLayout>
         <ListView x:Name="Categories"
-              ItemsSource="{Binding CategoryList}">
+                  ItemsSource="{Binding CategoryList}"
+                  HasUnevenRows="True">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Name}"/>
-            </DataTemplate>
+                    <ViewCell Height="88">
+                        <Label Text="{Binding Name}" 
+                               TextColor="{StaticResource ColorTextPrimary}"
+                               FontSize="24"
+                               VerticalOptions="CenterAndExpand" 
+                               Margin="{StaticResource ViewMargin}"/>
+                    </ViewCell>
+                </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
     </StackLayout>

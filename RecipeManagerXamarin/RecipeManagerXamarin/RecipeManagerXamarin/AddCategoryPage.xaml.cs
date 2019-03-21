@@ -20,6 +20,9 @@ namespace RecipeManagerXamarin
 		{
 			InitializeComponent ();
 
+            // Changes the colour of the navigation bar.
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#D81B60");
+
             // Sets the clicked listener for the toolbar item.
             ToolbarItemDone.Clicked += ToolbarItemDone_Clicked;
 		}
@@ -47,8 +50,7 @@ namespace RecipeManagerXamarin
                 {
                     await DisplayAlert("Error", "Error.", "OK");
                 }
-                
-                
+
                 // Removes the page from the navigation stack.
                 await Navigation.PopAsync();
             }

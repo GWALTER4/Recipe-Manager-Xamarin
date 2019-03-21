@@ -6,7 +6,7 @@
              Padding="{StaticResource PagePadding}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="ToolbarItemDone" Text="Done" />
+        <ToolbarItem x:Name="ToolbarItemDone" Icon="ic_check_white_24dp.xml" />
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>

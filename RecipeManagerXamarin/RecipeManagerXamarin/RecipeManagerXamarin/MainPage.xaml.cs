@@ -30,8 +30,15 @@ namespace RecipeManagerXamarin
             // Sets the item selected listener for the list view.
             Categories.ItemSelected += Categories_ItemSelected;
 
+            Categories.ItemTapped += Categories_ItemTapped;
+
             // Sets the clicked listener for the toolbar item.
             ToolbarItemAddCategory.Clicked += ToolbarItemAddCategory_Clicked;
+        }
+
+        async void Categories_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            await Navigation.PushAsync(new CategoryPage());
         }
         #endregion
 
@@ -42,6 +49,9 @@ namespace RecipeManagerXamarin
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            // Changes the colour of the navigation bar.
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#008577");
 
             // Gets all the categories from the database.
             CategoryList = App.Database.GetAllCategories();
