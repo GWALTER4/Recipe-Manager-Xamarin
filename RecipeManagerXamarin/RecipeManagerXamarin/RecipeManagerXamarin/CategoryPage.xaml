@@ -5,11 +5,12 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="ToolbarItemAddRecipe" Icon="ic_add_white_24dp.xml" />
+        <ToolbarItem x:Name="ToolbarItemDeleteCategory" Text="Delete category" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label x:Name="TestLabel" Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

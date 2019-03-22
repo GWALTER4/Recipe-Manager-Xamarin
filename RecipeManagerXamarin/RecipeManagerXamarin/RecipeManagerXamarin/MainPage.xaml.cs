@@ -30,6 +30,7 @@ namespace RecipeManagerXamarin
             // Sets the item selected listener for the list view.
             Categories.ItemSelected += Categories_ItemSelected;
 
+            // Sets the item tapped listener for the list view.
             Categories.ItemTapped += Categories_ItemTapped;
 
             // Sets the clicked listener for the toolbar item.
@@ -38,7 +39,11 @@ namespace RecipeManagerXamarin
 
         async void Categories_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new CategoryPage());
+            // Stores the category tapped by the user.
+            var categoryTapped = e.Item as Category;
+
+            // Adds a page to the navigation stack.
+            await Navigation.PushAsync(new CategoryPage(categoryTapped.ID));
         }
         #endregion
 

@@ -6230,6 +6230,9 @@ namespace RecipeManagerXamarin.Droid
 			// aapt resource value: 0x7f0c0191
 			public const int AppCompatDialogStyle = 2131493265;
 			
+			// aapt resource value: 0x7f0c0192
+			public const int AppToolbarTheme = 2131493266;
+			
 			// aapt resource value: 0x7f0c00a9
 			public const int Base_AlertDialog_AppCompat = 2131493033;
 			

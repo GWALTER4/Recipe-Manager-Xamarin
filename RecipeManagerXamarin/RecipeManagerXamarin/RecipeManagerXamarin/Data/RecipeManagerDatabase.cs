@@ -57,5 +57,22 @@ namespace RecipeManagerXamarin
             }
         }
 
+        /// <summary>
+        /// Deletes a category from the database.
+        /// </summary>
+        /// <param name="categoryID">Category ID</param>
+        /// <returns>Row count</returns>
+        public int DeleteCategory(int categoryID)
+        {
+            try
+            {
+                return _database.Delete<Category>(categoryID);
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
     }
 }
