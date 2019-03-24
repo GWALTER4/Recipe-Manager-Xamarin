@@ -57,6 +57,15 @@ namespace RecipeManagerXamarin
 
             // Sets the items source of the list view.
             ListViewRecipes.ItemsSource = RecipeList;
+
+            // Sets the item selected listener for the list view.
+            ListViewRecipes.ItemSelected += ListViewRecipes_ItemSelected;
+
+            // Sets the item tapped listener for the list view.
+            ListViewRecipes.ItemTapped += ListViewRecipes_ItemTapped;
+
+            // Sets the clicked listener for the toolbar item.
+            ToolbarItemAddRecipe.Clicked += ToolbarItemAddRecipe_Clicked;
         }
         #endregion
 
@@ -71,6 +80,27 @@ namespace RecipeManagerXamarin
         {
             // Sets the item to -1 so highlighting is disabled.
             ListViewRecipes.SelectedItem = -1;
+        }
+
+        /// <summary>
+        /// Tapped listener for the list view.
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event</param>
+        private void ListViewRecipes_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            
+        }
+
+        /// <summary>
+        /// Clicked listener for the toolbar item.
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event</param>
+        private async void ToolbarItemAddRecipe_Clicked(object sender, EventArgs e)
+        {
+            // Adds a page to the navigation stack.
+            await Navigation.PushAsync(new AddRecipePage());
         }
 
         /// <summary>

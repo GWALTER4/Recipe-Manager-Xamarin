@@ -5,6 +5,7 @@
     <Application.Resources>
         <x:String x:Key="MainPageTitle">Recipe Manager</x:String>
         <x:String x:Key="AddCategoryPageTitle">Add a category</x:String>
+        <x:String x:Key="AddRecipePageTitle">Add a recipe</x:String>
         <x:Int16 x:Key="ViewMargin">16</x:Int16>
         <x:Int16 x:Key="PagePadding">16</x:Int16>
         <x:Int16 x:Key="ListItemHeight">88</x:Int16>

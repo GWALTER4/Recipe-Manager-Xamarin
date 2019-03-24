@@ -91,7 +91,7 @@ namespace RecipeManagerXamarin
         /// </summary>
         /// <param name="sender">Sending object</param>
         /// <param name="e">Event</param>
-        async void ToolbarItemAddCategory_Clicked(object sender, EventArgs e)
+        private async void ToolbarItemAddCategory_Clicked(object sender, EventArgs e)
         {
             // Adds a page to the navigation stack.
             await Navigation.PushAsync(new AddCategoryPage());

@@ -24,7 +24,7 @@ namespace RecipeManagerXamarin
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#D81B60");
 
             // Sets the clicked listener for the toolbar item.
-            ToolbarItemDone.Clicked += ToolbarItemDone_Clicked;
+            ToolbarItemCategoryDone.Clicked += ToolbarItemCategoryDone_Clicked;
 		}
         #endregion
 
@@ -34,7 +34,7 @@ namespace RecipeManagerXamarin
         /// </summary>
         /// <param name="sender">Sending object</param>
         /// <param name="e">Event</param>
-        async void ToolbarItemDone_Clicked(object sender, EventArgs e)
+        async void ToolbarItemCategoryDone_Clicked(object sender, EventArgs e)
         {          
             // Gets the string from the entry.
             string categoryName = EntryCategoryName.Text;
