@@ -10,7 +10,7 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <ListView x:Name="Categories"
+        <ListView x:Name="ListViewCategories"
                   ItemsSource="{Binding CategoryList}"
                   HasUnevenRows="True">
         <ListView.ItemTemplate>

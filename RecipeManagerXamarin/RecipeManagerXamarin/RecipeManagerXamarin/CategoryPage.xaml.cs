@@ -13,22 +13,65 @@ namespace RecipeManagerXamarin
 	public partial class CategoryPage : ContentPage
 	{
         #region PROPERTIES
-        private int categoryID; // Category ID for the category being displayed.
+        private Category category; // Category ID for the category being displayed.
+        public List<Recipe> RecipeList; // List of recipes.
         #endregion
 
         #region CONSTRUCTORS
-        public CategoryPage (int categoryID)
+        public CategoryPage (Category category)
 		{
+            BindingContext = this;
+
 			InitializeComponent();
 
-            this.categoryID = categoryID;
+            this.category = category;
+
+            this.Title = category.Name;
+
+            // Sets the items source of the list view.
+            ListViewRecipes.ItemsSource = RecipeList;
+
+            // Sets the item selected listener for the list view.
+            ListViewRecipes.ItemSelected += ListViewRecipes_ItemSelected;
 
             // Sets the clicked listener for the toolbar item.
             ToolbarItemDeleteCategory.Clicked += ToolbarItemDeleteCategory_Clicked;
 		}
+
+
+        #endregion
+
+        #region METHODS
+        /// <summary>
+        /// Event handler for when the page appears.
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Changes the colour of the navigation bar.
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#008577");
+
+            // Gets all the recipes from the database.
+            RecipeList = App.Database.GetAllRecipes();
+
+            // Sets the items source of the list view.
+            ListViewRecipes.ItemsSource = RecipeList;
+        }
         #endregion
 
         #region EVENT HANDLERS
+
+        /// <summary>
+        /// Item selected listener for the list view.
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event</param>
+        private void ListViewRecipes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            // Sets the item to -1 so highlighting is disabled.
+            ListViewRecipes.SelectedItem = -1;
+        }
 
         /// <summary>
         /// Clicked listener for the toolbar item.
@@ -43,7 +86,7 @@ namespace RecipeManagerXamarin
             // Deletes the category if the user chooses "yes".
             if(answer)
             {
-                if(App.Database.DeleteCategory(categoryID) == 1)
+                if(App.Database.DeleteCategory(category.ID) == 1)
                 {
                     // Removes the page from the navigation stack.
                     await Navigation.PopAsync();

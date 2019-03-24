@@ -14,7 +14,7 @@ namespace RecipeManagerXamarin
         public List<Category> CategoryList; // List of categories.
         #endregion
 
-        #region PROPERTIES
+        #region CONSTRUCTORS
         /// <summary>
         /// Constructor for the MainPage class.
         /// </summary>
@@ -25,29 +25,20 @@ namespace RecipeManagerXamarin
             InitializeComponent();
 
             // Sets the items source of the list view.
-            Categories.ItemsSource = CategoryList;
+            ListViewCategories.ItemsSource = CategoryList;
 
             // Sets the item selected listener for the list view.
-            Categories.ItemSelected += Categories_ItemSelected;
+            ListViewCategories.ItemSelected += ListViewCategories_ItemSelected;
 
             // Sets the item tapped listener for the list view.
-            Categories.ItemTapped += Categories_ItemTapped;
+            ListViewCategories.ItemTapped += ListViewCategories_ItemTapped;
 
             // Sets the clicked listener for the toolbar item.
             ToolbarItemAddCategory.Clicked += ToolbarItemAddCategory_Clicked;
         }
-
-        async void Categories_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            // Stores the category tapped by the user.
-            var categoryTapped = e.Item as Category;
-
-            // Adds a page to the navigation stack.
-            await Navigation.PushAsync(new CategoryPage(categoryTapped.ID));
-        }
         #endregion
 
-        #region EVENT HANDLERS
+        #region METHODS
         /// <summary>
         /// Event handler for when the page appears.
         /// </summary>
@@ -62,7 +53,37 @@ namespace RecipeManagerXamarin
             CategoryList = App.Database.GetAllCategories();
 
             // Sets the items source of the list view.
-            Categories.ItemsSource = CategoryList;
+            ListViewCategories.ItemsSource = CategoryList;
+        }
+        #endregion
+
+        #region EVENT HANDLERS
+
+        /// <summary>
+        /// Tapped listener for the list view.
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event</param>
+        async void ListViewCategories_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            // Stores the category tapped by the user.
+            var categoryTapped = e.Item as Category;
+
+            // Adds a page to the navigation stack.
+            await Navigation.PushAsync(new CategoryPage(categoryTapped));
+        }
+
+        
+        
+        /// <summary>
+        /// Item selected listener for the list view.
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event</param>
+        private void ListViewCategories_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            // Sets the item to -1 so highlighting is disabled.
+            ListViewCategories.SelectedItem = -1;
         }
 
         /// <summary>
@@ -74,18 +95,7 @@ namespace RecipeManagerXamarin
         {
             // Adds a page to the navigation stack.
             await Navigation.PushAsync(new AddCategoryPage());
-        }
-
-        /// <summary>
-        /// Item selected listener for the list view.
-        /// </summary>
-        /// <param name="sender">Sending object</param>
-        /// <param name="e">Event</param>
-        private void Categories_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            // Sets the item to -1 so highlighting is disabled.
-            Categories.SelectedItem = -1;
-        }
+        }      
         #endregion
     }
 }

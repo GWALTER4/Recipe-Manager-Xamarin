@@ -7,12 +7,23 @@
         <ToolbarItem x:Name="ToolbarItemAddRecipe" Icon="ic_add_white_24dp.xml" />
         <ToolbarItem x:Name="ToolbarItemDeleteCategory" Text="Delete category" Order="Secondary"/>
     </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <ListView x:Name="ListViewRecipes"
+                ItemsSource="{Binding RecipeList}"
+                HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="88">
+                        <Label Text="{Binding Name}" 
+                            TextColor="{StaticResource ColorTextPrimary}"
+                            FontSize="24"
+                            VerticalOptions="CenterAndExpand" 
+                            Margin="{StaticResource ViewMargin}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
     
-    <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="TestLabel" Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
 </ContentPage>

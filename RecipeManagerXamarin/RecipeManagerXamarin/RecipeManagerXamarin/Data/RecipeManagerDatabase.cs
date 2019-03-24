@@ -74,5 +74,21 @@ namespace RecipeManagerXamarin
             }
         }
 
+        /// <summary>
+        /// Gets all the recipes from the database.
+        /// </summary>
+        /// <returns>Recipe list</returns>
+        public List<Recipe> GetAllRecipes()
+        {
+            try
+            {
+                return _database.Table<Recipe>().ToList();
+            }
+            catch (Exception ex)
+            {
+                return new List<Recipe>();
+            }
+        }
+
     }
 }
