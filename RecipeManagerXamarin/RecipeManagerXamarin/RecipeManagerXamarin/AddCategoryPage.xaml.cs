@@ -40,7 +40,7 @@ namespace RecipeManagerXamarin
             string categoryName = EntryCategoryName.Text;
 
             // Checks that the category name only contains valid characters.
-            if(!String.IsNullOrEmpty(categoryName) && InputCheck.GetInputCheckInstance.IsCategoryNameValid(categoryName))
+            if(!string.IsNullOrEmpty(categoryName) && InputCheck.GetInputCheckInstance.IsCategoryNameValid(categoryName))
             {
                 if(App.Database.InsertCategory(categoryName) == 1)
                 {

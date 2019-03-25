@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:RecipeManagerXamarin"
              x:Class="RecipeManagerXamarin.MainPage"
-             Title="{StaticResource MainPageTitle}">
+             Title="{StaticResource TitleMainPage}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="ToolbarItemAddCategory" Icon="ic_add_white_24dp.xml" />

@@ -11,7 +11,7 @@ namespace RecipeManagerXamarin
     public partial class MainPage : ContentPage
     {
         #region PROPERTIES
-        public List<Category> CategoryList; // List of categories.
+        private List<Category> CategoryList; // List of categories.
         #endregion
 
         #region CONSTRUCTORS

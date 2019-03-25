@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecipeManagerXamarin.AddInstructionPage"
+             Title ="{StaticResource TitleAddInstructionPage}"
+             Padding="{StaticResource PagePadding}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ToolbarItemInstructionDone" Icon="ic_check_white_24dp.xml" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <ImageButton x:Name="ImageButtonAddIngredient"
+                         HorizontalOptions="End"
+                         Source="ic_add_pink_24dp.xml"
+                         BackgroundColor="Transparent"/>
+
+            <Editor x:Name="EditorInstruction"                     
+                    Placeholder="Instruction..."
+                    HeightRequest="100"
+                    VerticalOptions="FillAndExpand"
+                    MaxLength="500" />
+
+            <ListView x:Name="Test"
+                      HasUnevenRows="True"
+                      BackgroundColor="AliceBlue">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Height="44" Text="{Binding Description}" TextColor="Black"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

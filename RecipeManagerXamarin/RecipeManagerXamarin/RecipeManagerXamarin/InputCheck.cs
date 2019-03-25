@@ -45,6 +45,26 @@ namespace RecipeManagerXamarin
             // validate the user's inputted category name.
             return Regex.IsMatch(categoryName, "[a-zA-Z\\s]+");
         }
+
+        /// <summary>
+        /// Checks if an ingredinet name contains valid characters.
+        /// </summary>
+        /// <param name="categoryName">Ingredient name</param>
+        /// <returns>bool</returns>
+        public bool IsIngredientNameValid(string ingredientName)
+        {
+            return Regex.IsMatch(ingredientName, "[a-zA-Z\\s\\d]+");
+        }
+
+        /// <summary>
+        /// Checks if an instruction's text contains valid characters.
+        /// </summary>
+        /// <param name="categoryName">Instruction text</param>
+        /// <returns>bool</returns>
+        public bool IsInstructionTextValid(string instructionText)
+        {
+            return Regex.IsMatch(instructionText, "[a-zA-Z\\s\\d()\\-.,]+");
+        }
         #endregion
     }
 }

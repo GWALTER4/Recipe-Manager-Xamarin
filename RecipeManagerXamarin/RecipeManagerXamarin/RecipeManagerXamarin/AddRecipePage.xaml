@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RecipeManagerXamarin.AddRecipePage"
-             Title="{StaticResource AddRecipePageTitle}"
+             Title="{StaticResource TitleAddRecipePage}"
              Padding="{StaticResource PagePadding}">
 
     <ContentPage.ToolbarItems>
@@ -10,10 +10,87 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical">
+
+            <Label Text="{StaticResource HeadingRecipeName}"
+                   TextColor="{StaticResource ColorTextSecondary}"
+                   FontSize="20"
+                   Margin="0, 0, 0, 8"/>
+
+            <Entry x:Name="EntryRecipeName" 
+                   Placeholder="Recipe name"
+                   MaxLength="35"
+                   Margin="0, 0, 0, 8"/>
+
+            <Grid Margin="0, 0, 0, 8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="{StaticResource HeadingIngredients}"
+                       TextColor="{StaticResource ColorTextSecondary}"
+                       FontSize="20"
+                       Grid.Column="0"/>
+
+                <ImageButton x:Name="ImageButtonAddIngredients"
+                             HorizontalOptions="End"
+                             Source="ic_add_pink_24dp.xml"
+                             Grid.Column="1"
+                             BackgroundColor="Transparent"/>
+            </Grid>
+
+            <Label x:Name="LabelIngredientsAdded" 
+                   TextColor="Green" 
+                   FontSize="18" 
+                   IsVisible="False" 
+                   Margin="0, 0, 0, 8"/>
+
+            <Grid Margin="0, 0, 0, 8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="{StaticResource HeadingInstructions}"
+                       TextColor="{StaticResource ColorTextSecondary}"
+                       FontSize="20"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+
+                <ImageButton x:Name="ImageButtonAddInstructions"
+                             HorizontalOptions="End"
+                             Source="ic_add_pink_24dp.xml"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             BackgroundColor="Transparent"/>
+            </Grid>
+
+            <Label x:Name="LabelInstructionsAdded" 
+                   TextColor="Green" 
+                   FontSize="18" 
+                   IsVisible="False"
+                   Margin="0, 0, 0, 8" />
+
+            <Grid Margin="0, 0, 0, 8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="{StaticResource HeadingDuration}"
+                       TextColor="{StaticResource ColorTextSecondary}"
+                       FontSize="20"
+                       Grid.Row="0"
+                       Grid.Column="0"/>
+
+                <Entry x:Name="EntryDuration"
+                       MaxLength="3"
+                       Margin="0, 0, 0, 8"
+                       Grid.Row="0"
+                       Grid.Column="1"/>
+            </Grid>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

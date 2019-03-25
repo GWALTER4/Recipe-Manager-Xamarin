@@ -3,12 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RecipeManagerXamarin.App">
     <Application.Resources>
-        <x:String x:Key="MainPageTitle">Recipe Manager</x:String>
-        <x:String x:Key="AddCategoryPageTitle">Add a category</x:String>
-        <x:String x:Key="AddRecipePageTitle">Add a recipe</x:String>
+        <x:String x:Key="TitleMainPage">Recipe Manager</x:String>
+        <x:String x:Key="TitleAddCategoryPage">Add a category</x:String>
+        <x:String x:Key="TitleAddRecipePage">Add a recipe</x:String>
+        <x:String x:Key="TitleAddIngredientPage">Add an ingredient</x:String>
+        <x:String x:Key="TitleAddInstructionPage">Add an instruction</x:String>
+        <x:String x:Key="HeadingRecipeName">Recipe name:</x:String>
+        <x:String x:Key="HeadingIngredients">Ingredients:</x:String>
+        <x:String x:Key="HeadingInstructions">Instructions:</x:String>
+        <x:String x:Key="HeadingDuration">Duration (mins):</x:String>
         <x:Int16 x:Key="ViewMargin">16</x:Int16>
         <x:Int16 x:Key="PagePadding">16</x:Int16>
         <x:Int16 x:Key="ListItemHeight">88</x:Int16>
         <Color x:Key="ColorTextPrimary">#4cb5a6</Color>
+        <Color x:Key="ColorTextSecondary">#D81B60</Color>
     </Application.Resources>
 </Application>

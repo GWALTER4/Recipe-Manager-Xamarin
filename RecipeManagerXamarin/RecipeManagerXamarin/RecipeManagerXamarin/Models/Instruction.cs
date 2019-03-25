@@ -5,29 +5,19 @@ using System.Collections.Generic;
 
 namespace RecipeManagerXamarin
 {
+    [Table("instruction")]
     public class Instruction
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
-        [NotNull, ForeignKey(typeof(Category))]
-        public int CategoryID { get; set; }
+        [NotNull, ForeignKey(typeof(Recipe))]
+        public int RecipeID { get; set; }
 
         [NotNull]
-        public string Name { get; set; }
-
-        public string ImagePath { get; set; }
+        public int SequenceNumber { get; set; }
 
         [NotNull]
-        public string IngredientsList { get; set; }
-
-        [NotNull]
-        public string InstructionCount { get; set; }
-
-        [NotNull]
-        public string TotalDuration { get; set; }
-
-        [OneToMany(CascadeOperations = CascadeOperation.CascadeDelete)]
-        public List<Instruction> Instructions { get; set; }
+        public string Description { get; set; }
     }
 }
