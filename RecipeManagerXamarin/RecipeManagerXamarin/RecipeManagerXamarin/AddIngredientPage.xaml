@@ -22,8 +22,7 @@
                     MaxLength="35"/>
             
             <ListView x:Name="ListViewIngredients"
-                      HasUnevenRows="True"
-                      BackgroundColor="AliceBlue">
+                      HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Height="44" Text="{Binding Name}" TextColor="Black"/>

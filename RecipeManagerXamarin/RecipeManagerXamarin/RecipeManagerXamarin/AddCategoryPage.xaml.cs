@@ -42,6 +42,7 @@ namespace RecipeManagerXamarin
             // Checks that the category name only contains valid characters.
             if(!string.IsNullOrEmpty(categoryName) && InputCheck.GetInputCheckInstance.IsCategoryNameValid(categoryName))
             {
+                // Inserts the category into the database.
                 if(App.Database.InsertCategory(categoryName) == 1)
                 {
                     await DisplayAlert("Done", "Category added.", "OK");

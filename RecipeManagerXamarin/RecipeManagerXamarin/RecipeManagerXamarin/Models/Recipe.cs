@@ -23,10 +23,10 @@ namespace RecipeManagerXamarin
         public string IngredientsList { get; set; }
 
         [NotNull]
-        public string InstructionCount { get; set; }
+        public int InstructionCount { get; set; }
 
         [NotNull]
-        public string TotalDuration { get; set; }
+        public int TotalDuration { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.CascadeDelete)]
         public List<Instruction> Instructions { get; set; }

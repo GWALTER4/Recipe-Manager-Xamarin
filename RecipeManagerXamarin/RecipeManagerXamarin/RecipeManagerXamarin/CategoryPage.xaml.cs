@@ -100,7 +100,7 @@ namespace RecipeManagerXamarin
         private async void ToolbarItemAddRecipe_Clicked(object sender, EventArgs e)
         {
             // Adds a page to the navigation stack.
-            await Navigation.PushAsync(new AddRecipePage());
+            await Navigation.PushAsync(new AddRecipePage(category.ID));
         }
 
         /// <summary>

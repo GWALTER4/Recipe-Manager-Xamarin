@@ -65,6 +65,47 @@ namespace RecipeManagerXamarin
         {
             return Regex.IsMatch(instructionText, "[a-zA-Z\\s\\d()\\-.,]+");
         }
+
+        /// <summary>
+        /// Checks if a recipe is valid.
+        /// </summary>
+        /// <param name="recipeName">Recipe name</param>
+        /// <param name="ingredientListCount">Number of ingredients</param>
+        /// <param name="instructionListCount">Number of instructions</param>
+        /// <param name="duration">Total duration</param>
+        /// <returns>bool</returns>
+        public bool IsRecipeValid(string recipeName, int ingredientListCount, int instructionListCount, int duration)
+        {
+            if (!Regex.IsMatch(recipeName, "[a-zA-Z\\s]+"))
+            {
+                return false;
+            }
+            else if (!(ingredientListCount > 0 && instructionListCount > 0 & duration > 0))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Creates a string with all the ingredients in the list to store in the database.
+        /// </summary>
+        /// <param name="ingredientList">Ingredient list</param>
+        /// <returns>Ingredient list string</returns>
+        public string CreateIngredientListString(Ingredient[] ingredientList)
+        {
+            string ingredientListString = null;
+
+            for(int i = 0; i < ingredientList.Length; i++)
+            {
+                ingredientListString = ingredientListString + "," + ingredientList[i].Name;
+            }
+
+            return ingredientListString;
+        }
         #endregion
     }
 }

@@ -15,13 +15,14 @@ namespace RecipeManagerXamarin
         #region PROPERTIES
         private Ingredient[] ingredientList; // List of ingredients.
         private Instruction[] instructionList; // List of instructions.
+        private int categoryID;
         #endregion
 
         #region CONSTRUCTORS
         /// <summary>
         /// Constructor for the AddRecipePage class.
         /// </summary>
-        public AddRecipePage ()
+        public AddRecipePage (int categoryID)
 		{
             BindingContext = this;
 
@@ -29,6 +30,9 @@ namespace RecipeManagerXamarin
             
             // Changes the colour of the navigation bar.
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#D81B60");
+
+            // Sets the category ID.
+            this.categoryID = categoryID;
 
             // Sets the clicked listener for the image button.
             ImageButtonAddIngredients.Clicked += ImageButtonAddIngredients_Clicked;
@@ -95,9 +99,60 @@ namespace RecipeManagerXamarin
         /// </summary>
         /// <param name="sender">Sending object</param>
         /// <param name="e">Event</param>
-        private void ToolbarItemRecipeDone_Clicked(object sender, EventArgs e)
+        private async void ToolbarItemRecipeDone_Clicked(object sender, EventArgs e)
         {
+            // Gets the recipe name from the entry.
+            string recipeName = EntryRecipeName.Text;
+
+            // Initializes the duration.
+            int duration = 0;
+
+            bool invalid = false;
+
+            // Checks that the duration is not emtpy and converts it to an int.
+            if (!string.IsNullOrEmpty(EntryDuration.Text))
+            {
+                duration = Int32.Parse(EntryDuration.Text);
+            }
+            else
+            {
+                invalid = true;
+            }
             
+            // Checks that the recipe is valid.
+            if(!string.IsNullOrEmpty(recipeName) && InputCheck.GetInputCheckInstance.IsRecipeValid(recipeName, ingredientList.Length, instructionList.Length, duration))
+            {
+                // Creates a string with all the ingredients from the list.
+                string ingredientListString = InputCheck.GetInputCheckInstance.CreateIngredientListString(ingredientList);
+
+                // Creates a new recipe object.
+                Recipe newRecipe = new Recipe() { CategoryID = categoryID, Name = recipeName, IngredientsList = ingredientListString,
+                    InstructionCount = instructionList.Length, TotalDuration = duration };
+
+                // Inserts the recipe into the database.
+                if(App.Database.InsertRecipe(newRecipe, instructionList) == 1)
+                {
+                    DisplayAlert("Done", "Recipe added", "OK");
+
+                    // Removes the page from the navigation stack.
+                    await Navigation.PopAsync();
+                }
+                else
+                {
+                    DisplayAlert("Error", "Error", "OK");
+                }
+
+
+            }
+            else
+            {
+                invalid = true;
+            }
+
+            if (invalid)
+            {
+                DisplayAlert("Error", "Invalid recipe", "OK");
+            }
         }
         #endregion
 

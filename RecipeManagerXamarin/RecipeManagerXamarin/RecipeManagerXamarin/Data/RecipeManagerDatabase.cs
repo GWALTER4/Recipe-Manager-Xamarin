@@ -22,6 +22,10 @@ namespace RecipeManagerXamarin
 
             // Creates the database tables.
             _database.CreateTable<Category>();
+
+            _database.CreateTable<Recipe>();
+
+            _database.CreateTable<Instruction>();
         }
 
         /// <summary>
@@ -90,5 +94,65 @@ namespace RecipeManagerXamarin
             }
         }
 
+        /// <summary>
+        /// Inserts a recipe into the database.
+        /// </summary>
+        /// <param name="recipe">Recipe</param>
+        /// <param name="instructionList">Instruction list</param>
+        /// <returns>Code value</returns>
+        public int InsertRecipe(Recipe recipe, Instruction[] instructionList)
+        {
+            try
+            {
+                _database.Insert(recipe);
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+            try
+            {
+                // Iterates through the instructions.
+                for(int i = 0; i < instructionList.Length; i++)
+                {
+                    // Inserts the instructions into the database.
+                    int value = InsertInstruction(recipe.ID, instructionList[i], i + 1);
+
+                    // Throws an exception if the instruction was not inserted.
+                    if(value < 1)
+                    {
+                        throw new Exception();
+                    }                
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
+            return 1;
+        }
+
+        /// <summary>
+        /// Inserts an instruction into the database.
+        /// </summary>
+        /// <param name="recipeID">Recipe ID</param>
+        /// <param name="instruction">Instruction</param>
+        /// <param name="sequenceNumber">Sequence number</param>
+        /// <returns></returns>
+        private int InsertInstruction(int recipeID, Instruction instruction, int sequenceNumber)
+        {
+            try
+            {
+                instruction.RecipeID = recipeID;
+                instruction.SequenceNumber = sequenceNumber;
+                return _database.Insert(instruction);
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
     }
 }

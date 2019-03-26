@@ -43,6 +43,15 @@
     <None Update="AddCategoryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="AddIngredientPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="AddInstructionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="AddRecipePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
