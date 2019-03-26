@@ -132,14 +132,14 @@ namespace RecipeManagerXamarin
                 // Inserts the recipe into the database.
                 if(App.Database.InsertRecipe(newRecipe, instructionList) == 1)
                 {
-                    DisplayAlert("Done", "Recipe added", "OK");
+                    await DisplayAlert("Done", "Recipe added", "OK");
 
                     // Removes the page from the navigation stack.
                     await Navigation.PopAsync();
                 }
                 else
                 {
-                    DisplayAlert("Error", "Error", "OK");
+                    await DisplayAlert("Error", "Error", "OK");
                 }
 
 
@@ -151,7 +151,7 @@ namespace RecipeManagerXamarin
 
             if (invalid)
             {
-                DisplayAlert("Error", "Invalid recipe", "OK");
+                await DisplayAlert("Error", "Invalid recipe", "OK");
             }
         }
         #endregion

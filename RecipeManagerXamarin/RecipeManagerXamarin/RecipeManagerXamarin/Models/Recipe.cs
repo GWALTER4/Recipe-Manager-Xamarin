@@ -28,7 +28,7 @@ namespace RecipeManagerXamarin
         [NotNull]
         public int TotalDuration { get; set; }
 
-        [OneToMany(CascadeOperations = CascadeOperation.CascadeDelete)]
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Instruction> Instructions { get; set; }
     }
 }

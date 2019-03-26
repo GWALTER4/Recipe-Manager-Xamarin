@@ -13,11 +13,16 @@ namespace RecipeManagerXamarin
 	public partial class CategoryPage : ContentPage
 	{
         #region PROPERTIES
-        private Category category; // Category ID for the category being displayed.
+        private Category category; // Stores the category being displayed.
         public List<Recipe> RecipeList; // List of recipes.
         #endregion
 
         #region CONSTRUCTORS
+
+        /// <summary>
+        /// Constructor for the Category Page class.
+        /// </summary>
+        /// <param name="category">Category</param>
         public CategoryPage (Category category)
 		{
             BindingContext = this;
@@ -87,9 +92,13 @@ namespace RecipeManagerXamarin
         /// </summary>
         /// <param name="sender">Sending object</param>
         /// <param name="e">Event</param>
-        private void ListViewRecipes_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void ListViewRecipes_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            
+            // Stores the category tapped by the user.
+            var recipeTapped = e.Item as Recipe;
+
+            // Adds a page to the navigation stack.
+            await Navigation.PushAsync(new RecipePage(recipeTapped));
         }
 
         /// <summary>

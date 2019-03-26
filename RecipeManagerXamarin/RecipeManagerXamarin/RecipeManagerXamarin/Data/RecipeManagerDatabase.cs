@@ -22,9 +22,7 @@ namespace RecipeManagerXamarin
 
             // Creates the database tables.
             _database.CreateTable<Category>();
-
             _database.CreateTable<Recipe>();
-
             _database.CreateTable<Instruction>();
         }
 
@@ -70,6 +68,15 @@ namespace RecipeManagerXamarin
         {
             try
             {
+                // Deletes all the instructions attached to all the recipes.
+                var recipeList = _database.Query<Recipe>("SELECT * FROM recipe");
+                foreach(var recipe in recipeList)
+                {
+                    DeleteRecipe(recipe);
+                }
+
+                // Deletes all the recipes attached to the category.
+                _database.Query<Recipe>("DELETE FROM recipe WHERE CategoryID = ?", categoryID);
                 return _database.Delete<Category>(categoryID);
             }
             catch (Exception ex)
@@ -148,6 +155,27 @@ namespace RecipeManagerXamarin
                 instruction.RecipeID = recipeID;
                 instruction.SequenceNumber = sequenceNumber;
                 return _database.Insert(instruction);
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Deletes a recipe from the database.
+        /// </summary>
+        /// <param name="recipeID">Recipe ID</param>
+        /// <returns>Row count</returns>
+        public int DeleteRecipe(Recipe recipe)
+        {
+            try
+            {
+                // Deletes all the instructions attached to the recipe.
+                _database.Query<Instruction>("DELETE FROM instruction WHERE RecipeID = ?", recipe.ID);
+
+                // Deletes the recipe.
+                return _database.Delete(recipe);             
             }
             catch (Exception ex)
             {
