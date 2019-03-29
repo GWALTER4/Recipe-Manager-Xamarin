@@ -12,7 +12,7 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
 
-            <Label Text="{StaticResource HeadingRecipeName}"
+            <Label Text="{StaticResource HeadingIngredients}"
                    TextColor="{StaticResource ColorTextSecondary}"
                    FontSize="20"/>
 

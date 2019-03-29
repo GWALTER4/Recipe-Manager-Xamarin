@@ -101,7 +101,14 @@ namespace RecipeManagerXamarin
 
             for(int i = 0; i < ingredientList.Length; i++)
             {
-                ingredientListString = ingredientListString + "," + ingredientList[i].Name;
+                if(i == 0)
+                {
+                    ingredientListString = "• " + ingredientList[i].Name;
+                }
+                else
+                {
+                    ingredientListString = ingredientListString + "," + "• " + ingredientList[i].Name;
+                }        
             }
 
             return ingredientListString;

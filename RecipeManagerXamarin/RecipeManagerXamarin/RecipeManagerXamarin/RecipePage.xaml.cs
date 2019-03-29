@@ -14,6 +14,7 @@ namespace RecipeManagerXamarin
     {
         #region PROPERTIES
         private Recipe recipe; // Stores the recipe being displayed.
+        private List<Instruction> instructionList; // Stores a list of instructions for the recipe.
         #endregion
 
         #region CONSTRUCTORS
@@ -28,13 +29,75 @@ namespace RecipeManagerXamarin
 
             this.recipe = recipe;
 
-            this.Title = recipe.Name;
+            // Sets the title of the page.
+            Title = recipe.Name;
+
+            // Gets the instructions for the recipe from the database.
+            instructionList = App.Database.GetInstructions(recipe);
+
+            // Displays the isntructions for the recipe.
+            DisplayInstructions();
+
+            // Sets the text for the ingredients list label.
+            LabelIngredientsList.Text = FormatIngredientsList(recipe.IngredientsList);
+
+            // Sets the text for the duration label.
+            LabelDuration.Text = LabelDuration.Text + " " + recipe.TotalDuration.ToString();
 
             // Sets the clicked listener for the toolbar item.
             ToolbarItemDeleteRecipe.Clicked += ToolbarItemDeleteRecipe_Clicked;
         }
+        #endregion
 
+        #region METHODS
 
+        /// <summary>
+        /// Formats the ingredients list.
+        /// </summary>
+        /// <param name="ingredientsList">Ingredients list</param>
+        /// <returns>Formatted ingredients list</returns>
+        public string FormatIngredientsList(string ingredientsList)
+        {
+            // Replaces all commas with new line characters.
+            string formattedIngredientsList = ingredientsList.Replace(",", Environment.NewLine);
+
+            return formattedIngredientsList;
+        }
+
+        /// <summary>
+        /// Displays the instructions for the recipe.
+        /// </summary>
+        public void DisplayInstructions()
+        {
+            // Initializes the instruction counter.
+            int instructionCounter = 1;
+
+            // Iterates through all the instructions in the instruction list.
+            foreach(Instruction instruction in instructionList)
+            {
+                // Creates a label with the instruction description.
+                var instructionLabel = new Label
+                {
+                    Text = instructionCounter.ToString() + ". " + instruction.Description,
+                    LineBreakMode = LineBreakMode.WordWrap,
+                    Margin = new Thickness(16, 0, 0, 0),
+                    FontSize = 16
+                };
+
+                // Creats a frame for the label.
+                Frame instructionFrame = new Frame
+                {
+                    Content = instructionLabel,
+                    BorderColor = Color.FromHex("#D81B60"),
+                    Margin = new Thickness(16, 0, 0, 16),
+                };
+
+                // Adds the label to the stack layout.
+                StackLayoutRecipePage.Children.Add(instructionFrame);
+
+                instructionCounter++;
+            }
+        }
         #endregion
 
         #region EVENT HANDLERS

@@ -97,8 +97,13 @@ namespace RecipeManagerXamarin
             // Stores the category tapped by the user.
             var recipeTapped = e.Item as Recipe;
 
-            // Adds a page to the navigation stack.
-            await Navigation.PushAsync(new RecipePage(recipeTapped));
+            // If there are no pages on the navigation stack and the last page is not a RecipePage a RecipePage will
+            // be added to the stack.
+            if (Navigation.NavigationStack.Count == 0 || Navigation.NavigationStack.Last().GetType() != typeof(RecipePage))
+            {
+                // Adds a page to the navigation stack.
+                await Navigation.PushAsync(new RecipePage(recipeTapped));
+            }           
         }
 
         /// <summary>

@@ -182,5 +182,34 @@ namespace RecipeManagerXamarin
                 return 0;
             }
         }
+
+        /// <summary>
+        /// Gets all the instructions for a recipe.
+        /// </summary>
+        /// <param name="recipe">Recipe object</param>
+        /// <returns>Instruction list</returns>
+        public List<Instruction> GetInstructions(Recipe recipe)
+        {
+            // Creates a list of instructions.
+            List<Instruction> instructionList = new List<Instruction>();
+
+            try
+            {
+                // Gets all the instructions for a recipe from the database.
+                var instructions = _database.Query<Instruction>("SELECT * FROM instruction WHERE RecipeID = ?", recipe.ID);
+
+                // Iterates through the instructions and adds them to the list.
+                foreach (var instruction in instructions)
+                {
+                    instructionList.Add(instruction as Instruction);
+                }
+
+                return instructionList;
+            }
+            catch (Exception ex)
+            {
+                return instructionList;
+            }      
+        }
     }
 }

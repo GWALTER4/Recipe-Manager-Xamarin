@@ -9,10 +9,25 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout x:Name="StackLayoutRecipePage">
+                <Label Text="{StaticResource HeadingIngredients}"
+                       TextColor="{StaticResource ColorTextSecondary}"
+                       FontSize="20"
+                       Margin="16,0,0,16"/>
+                <Label x:Name="LabelIngredientsList"
+                       FontSize="16"
+                       Margin="16,0,0,16"/>
+                <Label x:Name="LabelDuration"
+                       Text="{StaticResource HeadingDuration}"    
+                       TextColor="{StaticResource ColorTextSecondary}"
+                       FontSize="20"
+                       Margin="16,0,0,16"/>
+                <Label Text="{StaticResource HeadingInstructions}"
+                       TextColor="{StaticResource ColorTextSecondary}"
+                       FontSize="20"
+                       Margin="16,0,0,16"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

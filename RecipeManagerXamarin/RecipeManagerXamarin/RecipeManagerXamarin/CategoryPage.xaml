@@ -15,11 +15,38 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Height="88">
-                        <Label Text="{Binding Name}" 
-                            TextColor="{StaticResource ColorTextPrimary}"
-                            FontSize="24"
-                            VerticalOptions="CenterAndExpand" 
-                            Margin="{StaticResource ViewMargin}"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="placeholderimage.jpg"
+                                   Aspect="AspectFill"
+                                   HeightRequest="88"
+                                   WidthRequest="88"/>
+                            <Grid BackgroundColor="AliceBlue"
+                                  VerticalOptions="CenterAndExpand"
+                                  Margin="16,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}"
+                                       TextColor="{StaticResource ColorTextPrimary}"
+                                       FontSize="24"
+                                       Grid.Row="0"/>
+                                <Label Text="4 Steps"
+                                       TextColor="{StaticResource ColorTextPrimary}"
+                                       FontSize="16"
+                                       Grid.Row="1"
+                                       Grid.Column="0"/>
+                                <Label Text="30 Minutes"
+                                       TextColor="{StaticResource ColorTextPrimary}"
+                                       FontSize="16"
+                                       Grid.Row="1"
+                                       Grid.Column="1"/>
+                            </Grid>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
