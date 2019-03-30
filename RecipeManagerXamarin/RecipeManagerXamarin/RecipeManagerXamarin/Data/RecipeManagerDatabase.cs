@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using SQLite;
 
@@ -180,6 +181,35 @@ namespace RecipeManagerXamarin
             catch (Exception ex)
             {
                 return 0;
+            }
+        }
+
+        /// <summary>
+        /// Updates a recipe's image file path.
+        /// </summary>
+        /// <param name="recipe">Recipe object</param>
+        /// <param name="filePath">File path</param>
+        /// <returns>Code value</returns>
+        public int UpdateRecipeImagePath(Recipe recipe, string filePath)
+        {
+            try
+            {
+                // Checks if the file path is null.
+                if(recipe.ImagePath != null)
+                {
+                    // Deletes the old image.
+                    File.Delete(recipe.ImagePath);
+                }
+
+                // Updates the recipe with the new image file path.
+                string queryString = "UPDATE recipe SET ImagePath = '" + filePath + "' WHERE ID = " + recipe.ID;
+                _database.Query<Recipe>(queryString);
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                return -1;
             }
         }
 

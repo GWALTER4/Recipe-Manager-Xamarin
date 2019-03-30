@@ -16,12 +16,11 @@
                 <DataTemplate>
                     <ViewCell Height="88">
                         <StackLayout Orientation="Horizontal">
-                            <Image Source="placeholderimage.jpg"
+                            <Image Source="{Binding ImagePath}"
                                    Aspect="AspectFill"
                                    HeightRequest="88"
                                    WidthRequest="88"/>
-                            <Grid BackgroundColor="AliceBlue"
-                                  VerticalOptions="CenterAndExpand"
+                            <Grid VerticalOptions="CenterAndExpand"
                                   Margin="16,0,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -52,5 +51,4 @@
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
-    
 </ContentPage>

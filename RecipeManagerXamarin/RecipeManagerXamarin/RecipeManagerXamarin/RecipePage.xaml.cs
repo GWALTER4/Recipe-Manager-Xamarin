@@ -15,6 +15,7 @@ namespace RecipeManagerXamarin
         #region PROPERTIES
         private Recipe recipe; // Stores the recipe being displayed.
         private List<Instruction> instructionList; // Stores a list of instructions for the recipe.
+        private ImageManager imageManager; // Stores an image manager object.
         #endregion
 
         #region CONSTRUCTORS
@@ -28,6 +29,9 @@ namespace RecipeManagerXamarin
             InitializeComponent();
 
             this.recipe = recipe;
+
+            // Initialzies the image manager object.
+            imageManager = new ImageManager();
 
             // Sets the title of the page.
             Title = recipe.Name;
@@ -46,6 +50,9 @@ namespace RecipeManagerXamarin
 
             // Sets the clicked listener for the toolbar item.
             ToolbarItemDeleteRecipe.Clicked += ToolbarItemDeleteRecipe_Clicked;
+
+            // Sets the clicked listener for the toolbar item.
+            ToolbarItemEditPhoto.Clicked += ToolbarItemEditPhoto_Clicked;
         }
         #endregion
 
@@ -124,6 +131,34 @@ namespace RecipeManagerXamarin
                 {
                     await DisplayAlert("Error", "Error deleting recipe", "OK");
                 }
+            }
+        }
+
+        /// <summary>
+        /// Clicked listener for the toolbar item.
+        /// </summary>
+        /// <param name="sender">Sending object</param>
+        /// <param name="e">Event</param>
+        private async void ToolbarItemEditPhoto_Clicked(object sender, EventArgs e)
+        {
+            // Takes a photo.
+            int takePhotoResult = await imageManager.TakePhotoAsync();
+
+            if(takePhotoResult == -1)
+            {
+                await DisplayAlert("Error", "Error taking photo", "OK");
+            }
+
+            // Updates the recipe image file path.
+            int updateRecipeResult = imageManager.AddPhotoToRecipe(recipe);
+
+            if(updateRecipeResult == -1)
+            {
+                await DisplayAlert("Error", "Error updating recipe", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Done", "Photo added", "OK");
             }
         }
         #endregion

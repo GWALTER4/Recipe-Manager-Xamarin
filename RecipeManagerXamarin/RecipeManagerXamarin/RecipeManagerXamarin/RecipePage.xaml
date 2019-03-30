@@ -5,6 +5,7 @@
              Padding="{StaticResource PagePadding}">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ToolbarItemEditPhoto" Text="Edit photo" Order="Secondary"/>
         <ToolbarItem x:Name="ToolbarItemDeleteRecipe" Text="Delete recipe" Order="Secondary"/>
     </ContentPage.ToolbarItems>
 
