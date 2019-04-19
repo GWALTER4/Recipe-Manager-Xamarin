@@ -87,14 +87,26 @@ namespace RecipeManagerXamarin
         }
 
         /// <summary>
-        /// Gets all the recipes from the database.
+        /// Gets all the recipes for a particular category from the database.
         /// </summary>
         /// <returns>Recipe list</returns>
-        public List<Recipe> GetAllRecipes()
+        public List<Recipe> GetRecipes(Category category)
         {
             try
             {
-                return _database.Table<Recipe>().ToList();
+                // Creates a list of instructions.
+                List<Recipe> recipeList = new List<Recipe>();
+
+                // Gets all the recipes for a category from the database.
+                var recipes = _database.Query<Recipe>("SELECT * FROM recipe WHERE CategoryID = ?", category.ID);
+
+                // Iterates through the recipes and adds them to the list.
+                foreach (var recipe in recipes)
+                {
+                    recipeList.Add(recipe as Recipe);
+                }
+
+                return recipeList;
             }
             catch (Exception ex)
             {

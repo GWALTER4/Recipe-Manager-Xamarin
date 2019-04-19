@@ -58,7 +58,7 @@ namespace RecipeManagerXamarin
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#008577");
 
             // Gets all the recipes from the database.
-            RecipeList = App.Database.GetAllRecipes();
+            RecipeList = App.Database.GetRecipes(category);
 
             // Sets the items source of the list view.
             ListViewRecipes.ItemsSource = RecipeList;
