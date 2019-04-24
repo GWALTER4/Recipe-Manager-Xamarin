@@ -34,16 +34,22 @@
                                        TextColor="{StaticResource ColorTextPrimary}"
                                        FontSize="24"
                                        Grid.Row="0"/>
-                                <Label Text="4 Steps"
-                                       TextColor="{StaticResource ColorTextPrimary}"
-                                       FontSize="16"
-                                       Grid.Row="1"
-                                       Grid.Column="0"/>
-                                <Label Text="30 Minutes"
-                                       TextColor="{StaticResource ColorTextPrimary}"
-                                       FontSize="16"
-                                       Grid.Row="1"
-                                       Grid.Column="1"/>
+                                <Label Grid.Row="1" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span TextColor="{StaticResource ColorTextPrimary}" FontSize="16" Text="{Binding InstructionCount}"/>
+                                            <Span TextColor="{StaticResource ColorTextPrimary}" FontSize="16" Text=" Steps"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="1" Grid.Column="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span TextColor="{StaticResource ColorTextPrimary}" FontSize="16" Text="{Binding TotalDuration}"/>
+                                            <Span TextColor="{StaticResource ColorTextPrimary}" FontSize="16" Text=" Minutes"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
                             </Grid>
                         </StackLayout>
                     </ViewCell>
