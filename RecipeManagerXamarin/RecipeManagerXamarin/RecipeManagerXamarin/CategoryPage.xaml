@@ -26,25 +26,15 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Name}"
+                                <Label Grid.Row="0"
+                                       Text="{Binding Name}"
                                        TextColor="{StaticResource ColorTextPrimary}"
-                                       FontSize="24"
-                                       Grid.Row="0"/>
-                                <Label Grid.Row="1" Grid.Column="0">
+                                       FontSize="24"/>
+                                <Label Grid.Row="1">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span TextColor="{StaticResource ColorTextPrimary}" FontSize="16" Text="{Binding InstructionCount}"/>
-                                            <Span TextColor="{StaticResource ColorTextPrimary}" FontSize="16" Text=" Steps"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Label Grid.Row="1" Grid.Column="1">
-                                    <Label.FormattedText>
-                                        <FormattedString>
+                                            <Span TextColor="{StaticResource ColorTextPrimary}" FontSize="16" Text=" Steps    "/>
                                             <Span TextColor="{StaticResource ColorTextPrimary}" FontSize="16" Text="{Binding TotalDuration}"/>
                                             <Span TextColor="{StaticResource ColorTextPrimary}" FontSize="16" Text=" Minutes"/>
                                         </FormattedString>

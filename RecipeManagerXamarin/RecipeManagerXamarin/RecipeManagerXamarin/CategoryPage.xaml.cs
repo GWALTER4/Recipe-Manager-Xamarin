@@ -18,7 +18,6 @@ namespace RecipeManagerXamarin
         #endregion
 
         #region CONSTRUCTORS
-
         /// <summary>
         /// Constructor for the Category Page class.
         /// </summary>
@@ -39,11 +38,15 @@ namespace RecipeManagerXamarin
             // Sets the item selected listener for the list view.
             ListViewRecipes.ItemSelected += ListViewRecipes_ItemSelected;
 
+            // Sets the item tapped listener for the list view.
+            ListViewRecipes.ItemTapped += ListViewRecipes_ItemTapped;
+
             // Sets the clicked listener for the toolbar item.
             ToolbarItemDeleteCategory.Clicked += ToolbarItemDeleteCategory_Clicked;
-		}
 
-
+            // Sets the clicked listener for the toolbar item.
+            ToolbarItemAddRecipe.Clicked += ToolbarItemAddRecipe_Clicked;
+        }
         #endregion
 
         #region METHODS
@@ -62,15 +65,6 @@ namespace RecipeManagerXamarin
 
             // Sets the items source of the list view.
             ListViewRecipes.ItemsSource = RecipeList;
-
-            // Sets the item selected listener for the list view.
-            ListViewRecipes.ItemSelected += ListViewRecipes_ItemSelected;
-
-            // Sets the item tapped listener for the list view.
-            ListViewRecipes.ItemTapped += ListViewRecipes_ItemTapped;
-
-            // Sets the clicked listener for the toolbar item.
-            ToolbarItemAddRecipe.Clicked += ToolbarItemAddRecipe_Clicked;
         }
         #endregion
 
