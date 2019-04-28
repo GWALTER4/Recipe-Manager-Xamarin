@@ -20,7 +20,7 @@
                        FontSize="16"
                        Margin="16,0,0,16"/>
                 <Label x:Name="LabelDuration"
-                       Text="{StaticResource HeadingDuration}"    
+                       Text="{StaticResource HeadingDurationRecipePage}"    
                        TextColor="{StaticResource ColorTextSecondary}"
                        FontSize="20"
                        Margin="16,0,0,16"/>
