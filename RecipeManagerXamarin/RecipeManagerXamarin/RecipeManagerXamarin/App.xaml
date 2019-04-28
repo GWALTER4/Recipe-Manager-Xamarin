@@ -11,7 +11,7 @@
         <x:String x:Key="HeadingRecipeName">Recipe name:</x:String>
         <x:String x:Key="HeadingIngredients">Ingredients:</x:String>
         <x:String x:Key="HeadingInstructions">Instructions:</x:String>
-        <x:String x:Key="HeadingDuration">Duration (mins):</x:String>
+        <x:String x:Key="HeadingDuration">Total duration:</x:String>
         <x:Int16 x:Key="ViewMargin">16</x:Int16>
         <x:Int16 x:Key="PagePadding">16</x:Int16>
         <x:Int16 x:Key="ListItemHeight">88</x:Int16>
