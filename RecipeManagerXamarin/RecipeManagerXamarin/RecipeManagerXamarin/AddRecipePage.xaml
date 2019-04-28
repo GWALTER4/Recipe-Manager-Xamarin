@@ -71,7 +71,7 @@
                    IsVisible="False"
                    Margin="0, 0, 0, 8" />
 
-            <Grid Margin="0, 0, 0, 8">
+            <!--<Grid Margin="0, 0, 0, 8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="*"/>
@@ -90,7 +90,20 @@
                        Grid.Row="0"
                        Grid.Column="1"
                        Keyboard="Numeric"/>
-            </Grid>
+            </Grid>-->
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{StaticResource HeadingDuration}"
+                       TextColor="{StaticResource ColorTextSecondary}"
+                       FontSize="20"
+                       Margin="0, 0, 0, 8"/>
+
+                <Entry x:Name="EntryDuration"
+                       MaxLength="3"
+                       Margin="0, 0, 0, 8"
+                       Keyboard="Numeric"
+                       WidthRequest="44"/>
+            </StackLayout>
 
         </StackLayout>
     </ContentPage.Content>
