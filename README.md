@@ -7,3 +7,7 @@ performance for the two apps. This is the Xamarin.Forms application.
 The application allows the user to create categories and later create recipes under each category. The app stores the name,
 instructions, and duration for each recipe. The user can also choose to add a photo to each recipe that will appear next to 
 the recipe name on the category page.
+
+<img src="Images/XamarinMainPage.png" width=300> <img src="Images/XamarinCategoryPage.png" width=300>
+
+<img src="Images/XamarinAddRecipePage.png" width=300> <img src="Images/XamarinRecipePage.png" width=300>
